@@ -1,0 +1,19 @@
+name: Deploy natives
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: "./"
+          fetch-depth: 2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+      - run: npm install json-combiner
+      - run: node -e "console.log(12)"
